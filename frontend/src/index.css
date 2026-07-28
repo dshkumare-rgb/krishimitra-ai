@@ -1,0 +1,151 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    font-family: 'Outfit', 'Inter', sans-serif;
+    @apply transition-colors duration-200;
+  }
+}
+
+/* Glassmorphism Styles */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.dark .glass-panel {
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-primary-200 rounded-full dark:bg-primary-900;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-primary-300 dark:bg-primary-800;
+}
+
+/* Glow Effects */
+.green-glow {
+  box-shadow: 0 0 20px -5px rgba(34, 197, 94, 0.3);
+}
+
+.dark .green-glow {
+  box-shadow: 0 0 25px -5px rgba(34, 197, 94, 0.15);
+}
+
+/* Pulse Animation for Voice Assistant */
+@keyframes voice-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.5);
+  }
+  70% {
+    box-shadow: 0 0 0 15px rgba(34, 197, 94, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
+  }
+}
+
+.pulse-button {
+  animation: voice-pulse 1.8s infinite;
+}
+
+/* Leaflet maps styling fixes */
+.leaflet-container {
+  width: 100%;
+  height: 100%;
+  border-radius: 0.75rem;
+  z-index: 10;
+}
+.dark .leaflet-tile {
+  filter: brightness(0.6) invert(1) contrast(3) hue-rotate(200deg) saturate(0.3);
+}
+
+/* Drone Flight Simulation Scroller */
+@keyframes scrolling-flight {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 100% 100%;
+  }
+}
+
+/* --- Root Font Scaling --- */
+html.accessibility-font-large {
+  font-size: 112.5% !important; /* Scale text base to 18px */
+}
+html.accessibility-font-xlarge {
+  font-size: 125% !important; /* Scale text base to 20px */
+}
+
+/* --- High Contrast Theme Overrides --- */
+html.accessibility-high-contrast {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+}
+html.accessibility-high-contrast body,
+html.accessibility-high-contrast #root {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+}
+html.accessibility-high-contrast .bg-white,
+html.accessibility-high-contrast .dark\:bg-gray-900,
+html.accessibility-high-contrast .bg-gray-50,
+html.accessibility-high-contrast .dark\:bg-gray-950,
+html.accessibility-high-contrast .glass-panel {
+  background-color: #ffffff !important;
+  background: #ffffff !important;
+  color: #000000 !important;
+}
+html.accessibility-high-contrast *,
+html.accessibility-high-contrast p,
+html.accessibility-high-contrast h1,
+html.accessibility-high-contrast h2,
+html.accessibility-high-contrast h3,
+html.accessibility-high-contrast h4,
+html.accessibility-high-contrast h5,
+html.accessibility-high-contrast h6,
+html.accessibility-high-contrast span,
+html.accessibility-high-contrast label,
+html.accessibility-high-contrast input,
+html.accessibility-high-contrast select,
+html.accessibility-high-contrast textarea {
+  color: #000000 !important;
+  border-color: #000000 !important;
+}
+html.accessibility-high-contrast border,
+html.accessibility-high-contrast .border,
+html.accessibility-high-contrast [class*="border-"] {
+  border: 2px solid #000000 !important;
+}
+html.accessibility-high-contrast button,
+html.accessibility-high-contrast a,
+html.accessibility-high-contrast select {
+  border: 2px solid #000000 !important;
+  background-color: #ffffe0 !important;
+  color: #000000 !important;
+}
+html.accessibility-high-contrast button:hover,
+html.accessibility-high-contrast a:hover {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+}
+
+
