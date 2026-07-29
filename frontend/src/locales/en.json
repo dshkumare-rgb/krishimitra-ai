@@ -66,5 +66,16 @@
   "videoGuides": "Video Guides",
   "searchVideos": "Search guides by crop/disease...",
   "duration": "Duration:",
-  "langBadge": "Language:"
+  "langBadge": "Language:",
+  "appName": "KrishiMitra AI",
+  "onlineMode": "Online Mode",
+  "cropRecommendation": "Crop Recommendation",
+  "soilHealthCard": "Soil Health Card",
+  "priceHistory": "Price History",
+  "irrigationPlanner": "Irrigation Planner",
+  "resourceOpt": "Resource Optimization",
+  "fertilizerRecommend": "Fertilizer Recommendation",
+  "profitCalculator": "Profit Calculator",
+  "schemeFinder": "Scheme Finder",
+  "pestAlerts": "Pest Alerts"
 }
