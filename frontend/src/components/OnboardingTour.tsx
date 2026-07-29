@@ -56,7 +56,8 @@ export const OnboardingTour: React.FC<OnboardingTourProps> = ({ run, onFinish })
     }
   };
 
-  const JoyrideComponent = (JoyrideModule as any).default || JoyrideModule;
+  // Get the named Joyride component from the module exports
+  const JoyrideComponent = (JoyrideModule as any).Joyride || JoyrideModule;
 
   return (
     <JoyrideComponent
