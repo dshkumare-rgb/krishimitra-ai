@@ -6,7 +6,7 @@ import ChartComponent from '../components/ChartComponent';
 import DronePatrol from '../components/DronePatrol';
 import { 
   FiCloudRain, FiAlertTriangle, FiDollarSign, FiAward, 
-  FiArrowRight, FiThermometer, FiCheckSquare, FiMapPin 
+  FiArrowRight, FiThermometer, FiCheckSquare, FiMapPin, FiInfo 
 } from 'react-icons/fi';
 import { useLocation } from '../context/LocationContext';
 import LocationPicker from '../components/LocationPicker';

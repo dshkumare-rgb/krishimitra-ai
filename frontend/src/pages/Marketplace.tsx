@@ -5,6 +5,7 @@ import axios from 'axios';
 
 interface Listing {
   _id: string;
+  userFirebaseId: string;
   farmerName: string;
   phone: string;
   cropName: string;

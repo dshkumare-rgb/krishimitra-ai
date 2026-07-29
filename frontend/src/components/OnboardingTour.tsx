@@ -1,16 +1,26 @@
 import React from 'react';
-import Joyride, { Step, CallBackProps, STATUS } from 'react-joyride';
+import * as JoyrideModule from 'react-joyride';
 import { useLanguage } from '../context/LanguageContext';
 
 interface OnboardingTourProps {
-  run: boolean;
-  onFinish: () => void;
+  run?: boolean;
+  onFinish?: () => void;
 }
 
 export const OnboardingTour: React.FC<OnboardingTourProps> = ({ run, onFinish }) => {
   const { t } = useLanguage();
+  const [internalRun, setInternalRun] = React.useState(false);
 
-  const steps: Step[] = [
+  React.useEffect(() => {
+    const hasSeen = localStorage.getItem('km-has-seen-tour');
+    if (!hasSeen && run === undefined) {
+      setInternalRun(true);
+    }
+  }, [run]);
+
+  const activeRun = run !== undefined ? run : internalRun;
+
+  const steps: any[] = [
     {
       target: '#location-selector',
       content: t('tourLocationDesc'),
@@ -34,17 +44,24 @@ export const OnboardingTour: React.FC<OnboardingTourProps> = ({ run, onFinish })
     }
   ];
 
-  const handleJoyrideCallback = (data: CallBackProps) => {
+  const handleJoyrideCallback = (data: any) => {
     const { status } = data;
-    if ([STATUS.FINISHED, STATUS.SKIPPED].includes(status as any)) {
-      onFinish();
+    if (['finished', 'skipped'].includes(status)) {
+      localStorage.setItem('km-has-seen-tour', 'true');
+      if (onFinish) {
+        onFinish();
+      } else {
+        setInternalRun(false);
+      }
     }
   };
 
+  const JoyrideComponent = (JoyrideModule as any).default || JoyrideModule;
+
   return (
-    <Joyride
+    <JoyrideComponent
       steps={steps}
-      run={run}
+      run={activeRun}
       continuous
       showSkipButton
       showProgress

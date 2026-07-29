@@ -196,8 +196,8 @@ export const Layout: React.FC<LayoutProps> = ({ children, activePage, setActiveP
             <button 
               onClick={() => {
                 const langs: ('en' | 'hi' | 'pa')[] = ['en', 'hi', 'pa'];
-                const nextIdx = (langs.indexOf(language) + 1) % langs.length;
-                setLanguage(langs[nextIdx]);
+                const nextIdx = (langs.indexOf(language as any) + 1) % langs.length;
+                setLanguage(langs[nextIdx] as 'en' | 'hi' | 'pa');
               }}
               className="flex items-center gap-1 px-3 py-1.5 text-xs font-bold text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-800 rounded-xl hover:bg-gray-200 dark:hover:bg-gray-750 transition"
               title="Change Language / भाषा बदलें / ਭਾਸ਼ਾ ਬਦਲੋ"
@@ -389,7 +389,8 @@ export const Layout: React.FC<LayoutProps> = ({ children, activePage, setActiveP
         <CallExpertModal 
           isOpen={expertModalOpen} 
           onClose={() => setExpertModalOpen(false)} 
-          pageContext={activePage}
+          activePage={activePage}
+          leafImage={localStorage.getItem('km-last-diagnosed-image') || undefined}
         />
       )}
 
