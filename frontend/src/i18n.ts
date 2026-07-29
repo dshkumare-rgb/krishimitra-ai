@@ -5,10 +5,18 @@ import en from './locales/en.json';
 import hi from './locales/hi.json';
 import pa from './locales/pa.json';
 
+// Helper to safely unpack JSON resources across development (Vite) and production (Rollup)
+const resolveResource = (res: any) => {
+  if (res && res.default) {
+    return res.default;
+  }
+  return res;
+};
+
 const resources = {
-  en: { translation: en },
-  hi: { translation: hi },
-  pa: { translation: pa }
+  en: { translation: resolveResource(en) },
+  hi: { translation: resolveResource(hi) },
+  pa: { translation: resolveResource(pa) }
 };
 
 i18n
